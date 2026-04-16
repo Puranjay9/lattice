@@ -1,0 +1,8 @@
+[workspace]
+members = [
+    "rust/merkle-store",
+    "rust/chain-state",
+    "rust/consensus",
+    "rust/p2p-net",
+    "rust/lattice-bridge",
+]
