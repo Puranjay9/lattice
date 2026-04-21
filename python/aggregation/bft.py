@@ -57,7 +57,7 @@ def krum(packets, k: int = None) -> dict:
         dists = []
         for j in range(n):
             if i != j:
-                diff = matrix[i] = matrix[j]
+                diff = matrix[i] - matrix[j]
                 dists.append(np.dot(diff, diff))
         dists.sort()
         scores[i] = sum(dists[:k])

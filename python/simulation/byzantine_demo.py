@@ -18,6 +18,9 @@ def one_step(models, step, use_byzantine=True, aggregation='krum'):
     for i, model in enumerate(models):
         idx = torch.randint(0, vocab_size, (4,16))
         targets = torch.randint(0, vocab_size, (4, 16))
+        for p in model.params.values():
+            if p.grad is not None:
+                p.grad.zero_()
         logits = model.forward(idx)
         loss = F.cross_entropy(logits.view(-1, vocab_size), targets.view(-1))
         loss.backward()
@@ -57,7 +60,7 @@ def one_step(models, step, use_byzantine=True, aggregation='krum'):
 
     elif aggregation == "krum":
         aggregated = krum(packets, k = 2)
-    elif aggregated  == "median":
+    elif aggregation == "median":
         aggregated = coordinate_wise_median(packets)
 
     for model in models:

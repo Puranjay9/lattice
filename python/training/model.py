@@ -39,7 +39,7 @@ class LatticeTransformer:
     def layer_norm(self, x, g):
         mean = x.mean(-1, keepdim = True)
         std = x.std(-1, keepdim = True)
-        return g * (x - mean) / std
+        return g * (x - mean) / (std + 1e-5)
     
     def attention(self, x, Wq, Wk, Wv, Wo):
         B, T, C = x.shape
