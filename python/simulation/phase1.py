@@ -11,4 +11,4 @@ h2 = store.insert(layer2)
 
 store.set_layer_order([h1, h2])
 
-print("Merkel root:", store.merkle_root_hex())
+print("Merkle root:", store.merkle_root_hex())

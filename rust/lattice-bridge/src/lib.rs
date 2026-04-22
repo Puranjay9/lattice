@@ -41,7 +41,7 @@ impl WeightStore {
         for h in hashes {
             let arr: [u8; 32] = h.try_into()
                 .map_err(|_| pyo3::exceptions::PyValueError::new_err(
-                        "each hash must be eaxactly 32 bytes"
+                        "each hash must be exactly 32 bytes"
                         ))?;
 
             converted.push(arr);

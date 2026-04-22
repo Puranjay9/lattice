@@ -8,7 +8,7 @@ pub fn hash_tensor(data: &[f32]) -> [u8; 32] {
 
 }
 
-pub fn compute_merkel_root(leaves: &[[u8;32]]) -> [u8;32] {
+pub fn compute_merkle_root(leaves: &[[u8;32]]) -> [u8;32] {
     if leaves.is_empty() {
         return [0u8; 32];
     }
@@ -67,7 +67,7 @@ impl WeightStore{
     }
 
     pub fn merkle_root(&self) -> [u8; 32]{
-        compute_merkel_root(&self.layer_hashes)
+        compute_merkle_root(&self.layer_hashes)
     }
 
     pub fn apply_delta(
